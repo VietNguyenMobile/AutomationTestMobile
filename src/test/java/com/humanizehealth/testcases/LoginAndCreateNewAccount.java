@@ -4,6 +4,7 @@ import com.humanizehealth.base.Base;
 import com.humanizehealth.pages.AccountSetup;
 import com.humanizehealth.pages.SetUpOption;
 import com.humanizehealth.pages.SignIn;
+import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -33,15 +34,21 @@ public class LoginAndCreateNewAccount extends Base {
         String state = userTestData.getJSONObject("validAccount").getString("state");
         String zipCode = userTestData.getJSONObject("validAccount").getString("zipCode");
 
-        accountSetup.performCreateAccount(
+        setUpOption = accountSetup.performCreateAccount(
                 displayName,
                 firstName,
                 lastName,
                 "",
-                email
+                email,
+                phoneNumber,
+                street,
+                city,
+                zipCode
         );
 
-        Assert.assertTrue(true);
+        Thread.sleep(2000);
+        logger.log(LogStatus.INFO, "performCreateAccount successfully");
+        Assert.assertTrue(setUpOption.isMyOwnHealthButtonDisplayed());
 
     }
 }

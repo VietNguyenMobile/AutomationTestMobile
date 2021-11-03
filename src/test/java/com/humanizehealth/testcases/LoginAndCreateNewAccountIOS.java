@@ -38,7 +38,11 @@ public class LoginAndCreateNewAccountIOS extends Base {
                 firstName,
                 lastName,
                 "",
-                email
+                email,
+                phoneNumber,
+                street,
+                city,
+                zipCode
         );
 
         Assert.assertTrue(true);

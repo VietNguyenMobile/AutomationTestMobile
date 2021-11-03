@@ -84,6 +84,7 @@ public class Base {
             caps.setCapability(MobileCapabilityType.APP, props.getProperty("androidAppWindows"));
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
             caps.setCapability(MobileCapabilityType.ORIENTATION, "PORTRAIT");
+            caps.setCapability(MobileCapabilityType.NO_RESET, false);
 //            caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.fluidity.MainActivity");
 //            caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.humanize.heath.qa");
 

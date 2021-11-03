@@ -1,6 +1,7 @@
 package com.humanizehealth.pages;
 
 import com.humanizehealth.base.Base;
+import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
@@ -8,6 +9,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -66,6 +68,7 @@ public class AccountSetup extends Base {
         displayNameEditText.clear();
         displayNameEditText.sendKeys(displayName);
         driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputDisplayNameEditText successfully");
     }
 
     public void inputFirstNameEditText (String firstName) {
@@ -73,6 +76,7 @@ public class AccountSetup extends Base {
         firstNameEditText.clear();
         firstNameEditText.sendKeys(firstName);
         driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputFirstNameEditText successfully");
     }
 
     public void inputLastNameEditText (String lastName) {
@@ -80,17 +84,17 @@ public class AccountSetup extends Base {
         lastNameEditText.clear();
         lastNameEditText.sendKeys(lastName);
         driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputLastNameEditText successfully");
     }
 
     public void setDateOfBirthSelector () throws InterruptedException {
-        System.out.println("setDateOfBirthSelector");
-        System.out.println("dateOfBirthSelector: "+ dateOfBirthSelector.isDisplayed());
         dateOfBirthSelector.click();
         dateOfBirthSelector.click();
-        System.out.println("setDateOfBirthSelector.click()");
         Thread.sleep(5000);
-//        DateSelector dateSelector = new DateSelector();
-//        dateSelector.performSelectDate();
+        DateSelector dateSelector = new DateSelector();
+        Thread.sleep(2000);
+        dateSelector.performSelectDate();
+        logger.log(LogStatus.INFO, "setDateOfBirthSelector successfully");
     }
 
     public void inputEmailEditText (String email) {
@@ -98,6 +102,41 @@ public class AccountSetup extends Base {
         emailEditText.clear();
         emailEditText.sendKeys(email);
         driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputEmailEditText successfully");
+    }
+
+    public void inputPhoneEditText (String phone) {
+        phoneEditText.click();
+        phoneEditText.clear();
+        phoneEditText.sendKeys(phone);
+        driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputPhoneEditText successfully");
+    }
+
+    public void inputStreetEditText (String phone) {
+        streetEditText.click();
+        streetEditText.clear();
+        streetEditText.sendKeys(phone);
+        driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputStreetEditText successfully");
+    }
+
+    public void inputCityEditText (String city) {
+        cityEditText.click();
+        cityEditText.clear();
+        cityEditText.sendKeys(city);
+        driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputCityEditText successfully");
+    }
+
+    public void inputZipCodeEditText (String zipcode) {
+        zipCodeEditText.click();
+        zipCodeEditText.clear();
+        zipCodeEditText.sendKeys(zipcode);
+        driver.hideKeyboard();
+        cityEditText.click();
+        driver.hideKeyboard();
+        logger.log(LogStatus.INFO, "inputZipCodeEditText successfully");
     }
 
     public SetUpOption performCreateAccount(
@@ -105,19 +144,22 @@ public class AccountSetup extends Base {
             String firstName,
             String lastName,
             String dateOfBirth,
-            String email
-//            String phone,
-//            String street,
-//            String city,
+            String email,
+            String phone,
+            String street,
+            String city,
 //            String state,
-//            String zipCode
+            String zipCode
             ) throws InterruptedException {
 
         inputDisplayNameEditText(displayName);
+        Thread.sleep(1000);
 
         inputFirstNameEditText(firstName);
+        Thread.sleep(1000);
 
         inputLastNameEditText(lastName);
+        Thread.sleep(1000);
 
         TouchAction action = new TouchAction(driver);
         action.press(PointOption.point(0,500))
@@ -128,9 +170,31 @@ public class AccountSetup extends Base {
 
         setDateOfBirthSelector();
 
-//        inputEmailEditText(email);
+        inputEmailEditText(email);
+        Thread.sleep(1000);
+
+        inputPhoneEditText(phone);
+        Thread.sleep(1000);
+
+        inputStreetEditText(street);
+        Thread.sleep(1000);
+
+        inputCityEditText(city);
+        Thread.sleep(1000);
+
+        action.press(PointOption.point(0,1000))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(0, 100)).release().perform();
+
+        Thread.sleep(4000);
+
+        inputZipCodeEditText(zipCode);
+
+        createUserButton.click();
+        createUserButton.click();
 
         return new SetUpOption();
     }
+
 
 }

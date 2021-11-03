@@ -8,7 +8,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class SetUpOption extends Base {
 
     @iOSXCUITFindBy(accessibility = "myOwnHealthButton")
-    @AndroidFindBy(accessibility = "myOwnHealthButton")
+    @AndroidFindBy(xpath = "//*[@text='My own health']")
     public MobileElement myOwnHealthButton;
 
     @iOSXCUITFindBy(accessibility = "someoneICareForButton")

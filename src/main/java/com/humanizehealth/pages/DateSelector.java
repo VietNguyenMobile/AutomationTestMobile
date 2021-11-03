@@ -33,9 +33,11 @@ public class DateSelector extends Base {
     public MobileElement overlayBottom;
 
     public void performSelectDate() throws InterruptedException {
+        System.out.println("performSelectDate");
         selectYear.click();
+        System.out.println("selectYear: " + selectYear.isDisplayed());
         Actions actions = new Actions(driver);
-        actions.clickAndHold(overlayTop).moveToElement(selectYear).build().perform();
+        actions.clickAndHold(overlayTop).moveToElement(overlayBottom).build().perform();
         Thread.sleep(4000);
         selectButton.click();
     }
