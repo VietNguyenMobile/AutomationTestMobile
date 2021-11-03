@@ -10,6 +10,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.AutomationName;
+import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -93,8 +94,10 @@ public class Base {
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.IOS);
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15.0");
-            caps.setCapability(MobileCapabilityType.UDID, "18DB0C66-FD8C-4595-97EB-614B7E74696F");
-            caps.setCapability(MobileCapabilityType.APP, props.getProperty("iosApp"));
+            caps.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.humanize.health.qa");
+            caps.setCapability(IOSMobileCapabilityType.APP_NAME, "HMN_QA");
+            caps.setCapability(MobileCapabilityType.UDID, "56B05B33-8806-40C7-A852-6908C91A0298");
+//            caps.setCapability(MobileCapabilityType.APP, props.getProperty("iosApp"));
 
             driver = new IOSDriver<MobileElement>(appiumServerURL, caps);
         }
@@ -103,20 +106,20 @@ public class Base {
         logger = extent.startTest(method.getName());
     }
 
-//    @AfterMethod
-//    public void afterMethod(ITestResult result, Method method) throws IOException {
-//        File screenshotFile = driver.getScreenshotAs(OutputType.FILE);
-//        FileUtils.copyFile(screenshotFile, new File("Screenshots/" + method.getName() + ".png"));
-//
-//        if (result.getStatus() == ITestResult.FAILURE) {
-//            logger.log(LogStatus.FAIL, "The test case is failed");
-//            logger.log(LogStatus.FAIL, result.getThrowable());
-//            logger.log(LogStatus.INFO, logger.addScreenCapture("../Screenshots/" + method.getName() + ".png"));
-//        } else if (result.getStatus() == ITestResult.SUCCESS) {
-//            logger.log(LogStatus.PASS, "The test case is passed");
-//            logger.log(LogStatus.INFO , logger.addScreenCapture("../Screenshots/" + method.getName() + ".png"));
-//        }
-//        extent.endTest(logger);
-//    }
+    @AfterMethod
+    public void afterMethod(ITestResult result, Method method) throws IOException {
+        File screenshotFile = driver.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshotFile, new File("Screenshots/" + method.getName() + ".png"));
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            logger.log(LogStatus.FAIL, "The test case is failed");
+            logger.log(LogStatus.FAIL, result.getThrowable());
+            logger.log(LogStatus.INFO, logger.addScreenCapture("../Screenshots/" + method.getName() + ".png"));
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            logger.log(LogStatus.PASS, "The test case is passed");
+            logger.log(LogStatus.INFO , logger.addScreenCapture("../Screenshots/" + method.getName() + ".png"));
+        }
+        extent.endTest(logger);
+    }
 
 }

@@ -4,6 +4,7 @@
         <parameter name="deviceName" value="emulator-5554" />
         <classes>
             <class name="com.humanizehealth.testcases.LoginAndCreateNewAccount" />
+<!--            <class name="com.humanizehealth.testcases.LoginAndCreateNewAccountIOS" />-->
         </classes>
     </test>
 </suite>
