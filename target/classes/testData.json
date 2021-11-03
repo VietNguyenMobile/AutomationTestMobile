@@ -1,0 +1,18 @@
+{
+  "validAccount" : {
+    "displayName": "Viet Nguyen",
+    "firstName": "Viet",
+    "lastName": "Nguyen",
+    "dateOfBirth": "",
+    "email": "quocviet.ce@gmail.com",
+    "phoneNumber": "0793405273",
+    "street": "Main Street",
+    "city": "Los Angles",
+    "state": "California",
+    "zipCode": "90001"
+  },
+  "inValidUser" : {
+    "email": "hatem@qacart.com",
+    "password": "wrongPassword"
+  }
+}

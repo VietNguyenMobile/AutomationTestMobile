@@ -1,0 +1,9 @@
+<suite name="Humanize Health App">
+    <test name="regression test">
+        <parameter name="platformName" value="android" />
+        <parameter name="deviceName" value="emulator-5554" />
+        <classes>
+            <class name="com.humanizehealth.testcases.LoginAndCreateNewAccount" />
+        </classes>
+    </test>
+</suite>
