@@ -27,7 +27,7 @@ public class AccountSetup extends Base {
     @AndroidFindBy(accessibility = "lastNameEditText")
     public MobileElement lastNameEditText;
 
-    @iOSXCUITFindBy(accessibility = "dateOfBirthSelector")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther[@name=\"Date of Birth*\"])[3]")
     @AndroidFindBy(accessibility = "dateOfBirthSelector")
     public MobileElement dateOfBirthSelector;
 
@@ -57,7 +57,7 @@ public class AccountSetup extends Base {
 
     @iOSXCUITFindBy(accessibility = "Complete your account")
     @AndroidFindBy(xpath = "//*[@text='Complete your account']")
-    public MobileElement completeYourAccount;
+    public MobileElement completeYourAccount = driver.findElement(By.xpath(""));
 
     public boolean isTextCompleteYourAccountDisplayed() {
         return completeYourAccount.isDisplayed();
@@ -67,7 +67,8 @@ public class AccountSetup extends Base {
         displayNameEditText.click();
         displayNameEditText.clear();
         displayNameEditText.sendKeys(displayName);
-        driver.hideKeyboard();
+        displayNameEditText.sendKeys(Keys.RETURN);
+//        driver.hideKeyboard();
         logger.log(LogStatus.INFO, "inputDisplayNameEditText successfully");
     }
 
@@ -75,7 +76,8 @@ public class AccountSetup extends Base {
         firstNameEditText.click();
         firstNameEditText.clear();
         firstNameEditText.sendKeys(firstName);
-        driver.hideKeyboard();
+        firstNameEditText.sendKeys(Keys.RETURN);
+//        driver.hideKeyboard();
         logger.log(LogStatus.INFO, "inputFirstNameEditText successfully");
     }
 
@@ -83,13 +85,17 @@ public class AccountSetup extends Base {
         lastNameEditText.click();
         lastNameEditText.clear();
         lastNameEditText.sendKeys(lastName);
-        driver.hideKeyboard();
+        lastNameEditText.sendKeys(Keys.RETURN);
+//        driver.hideKeyboard();
         logger.log(LogStatus.INFO, "inputLastNameEditText successfully");
     }
 
     public void setDateOfBirthSelector () throws InterruptedException {
+        System.out.println("dateOfBirthSelector: " + dateOfBirthSelector.isDisplayed());
         dateOfBirthSelector.click();
+        System.out.println("dateOfBirthSelector.click() 0");
         dateOfBirthSelector.click();
+        System.out.println("dateOfBirthSelector.click() 1");
         Thread.sleep(5000);
         DateSelector dateSelector = new DateSelector();
         Thread.sleep(2000);
@@ -170,28 +176,28 @@ public class AccountSetup extends Base {
 
         setDateOfBirthSelector();
 
-        inputEmailEditText(email);
-        Thread.sleep(1000);
-
-        inputPhoneEditText(phone);
-        Thread.sleep(1000);
-
-        inputStreetEditText(street);
-        Thread.sleep(1000);
-
-        inputCityEditText(city);
-        Thread.sleep(1000);
-
-        action.press(PointOption.point(0,1000))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-                .moveTo(PointOption.point(0, 100)).release().perform();
-
-        Thread.sleep(4000);
-
-        inputZipCodeEditText(zipCode);
-
-        createUserButton.click();
-        createUserButton.click();
+//        inputEmailEditText(email);
+//        Thread.sleep(1000);
+//
+//        inputPhoneEditText(phone);
+//        Thread.sleep(1000);
+//
+//        inputStreetEditText(street);
+//        Thread.sleep(1000);
+//
+//        inputCityEditText(city);
+//        Thread.sleep(1000);
+//
+//        action.press(PointOption.point(0,1000))
+//                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+//                .moveTo(PointOption.point(0, 100)).release().perform();
+//
+//        Thread.sleep(4000);
+//
+//        inputZipCodeEditText(zipCode);
+//
+//        createUserButton.click();
+//        createUserButton.click();
 
         return new SetUpOption();
     }

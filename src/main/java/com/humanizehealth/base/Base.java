@@ -98,6 +98,7 @@ public class Base {
             caps.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.humanize.health.qa");
             caps.setCapability(IOSMobileCapabilityType.APP_NAME, "HMN_QA");
             caps.setCapability(MobileCapabilityType.UDID, "56B05B33-8806-40C7-A852-6908C91A0298");
+            caps.setCapability(MobileCapabilityType.NO_RESET, false);
 //            caps.setCapability(MobileCapabilityType.APP, props.getProperty("iosApp"));
 
             driver = new IOSDriver<MobileElement>(appiumServerURL, caps);

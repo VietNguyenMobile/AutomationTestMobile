@@ -14,7 +14,7 @@ public class LoginAndCreateNewAccount extends Base {
     AccountSetup accountSetup;
     SetUpOption setUpOption;
 
-    @Test
+    @Test(priority = 2)
     public void TC_001_Create_New_Account_With_A_Valid_Data() throws InterruptedException {
         signIn = new SignIn();
 
