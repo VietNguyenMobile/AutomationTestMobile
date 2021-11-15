@@ -1,19 +1,18 @@
 <suite name="Humanize Health App">
     <test name="regression test">
-        <parameter name="platformName" value="ios" />
-        <parameter name="deviceName" value="iPhone" />
         <classes>
-<!--            <class name="com.humanizehealth.testcases.LoginAndCreateNewAccount"></class>-->
+            <class name="com.humanizehealth.testcases.LoginAndCreateNewAccountIOS"></class>
 <!--            <class>-->
 <!--                <methods>-->
 <!--                    <exclude name="TC_002_Create_New_Account_With_A_Valid_Data_iOS" />-->
 <!--                    <include name="TC_002_Create_New_Account_With_A_Valid_Data_iOS" />-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="com.humanizehealth.testcases.LoginAndCreateNewAccountIOS" />
         </classes>
-<!--      <packages>-->
-<!--          <package name="test" />-->
-<!--      </packages>-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="Smoke" />-->
+<!--            </run>-->
+<!--        </groups>-->
     </test>
 </suite>
